@@ -32,24 +32,54 @@ namespace Models
     string userDailyChoice = Console.ReadLine().ToLower();
     if (userDailyChoice.Contains("water"))
     {
-      testPlant.Thirst += 4;
-      Console.WriteLine("NEW THIRST: " + testPlant.Thirst);
+      // testPlant.Thirst += 4;
+      // Console.WriteLine("NEW THIRST: " + testPlant.Thirst);
+      testPlant.GiveWater();
+
     }
-    else if (userDailyChoice.Contains("feed"))
+    else if (userDailyChoice.Contains("walk"))
     {
-      testPlant.Hunger += 4;
-      Console.WriteLine("NEW HUNGER: " + testPlant.Hunger);
+      testPlant.GiveSun();
+      // testPlant.Hunger += 4;
+      // Console.WriteLine("NEW HUNGER: " + testPlant.Hunger);
     }
-     else if (userDailyChoice.Contains("walk"))
+     else if (userDailyChoice.Contains("feed"))
     {
-      testPlant.Sunshine += 4;
-      Console.WriteLine("NEW SUNSHINE: " + testPlant.Sunshine);
+      testPlant.GiveFood();
+      // testPlant.Sunshine += 4;
+      // Console.WriteLine("NEW SUNSHINE: " + testPlant.Sunshine);
     }
      else if (userDailyChoice.Contains("tv"))
     {
+      testPlant.DoNothing();
       // testPlant.Hunger += 4;
       Console.WriteLine("Youre a lazy douche");
     }
+    }
+    private void GiveWater()
+    {
+      Thirst += 4;
+      Console.WriteLine("NEW THIRST: " + Thirst);
+    }
+
+    private void GiveFood()
+    {
+      Hunger += 4;
+      Console.WriteLine("NEW Hunger: " + Thirst);
+    }
+
+    private void GiveSun()
+    {
+      Sunshine += 4;
+      Console.WriteLine("NEW Sunshine: " + Sunshine);
+    }
+
+    private void DoNothing()
+    {
+      Thirst -= 1;
+      Sunshine -= 1;
+      Hunger -= 1;
+      Console.WriteLine("NEW Sunshine: " + Sunshine);
     }
 
   
