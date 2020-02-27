@@ -10,13 +10,11 @@ namespace GrowYourOwnPlant
     {
     Console.WriteLine("Hello! You just received a new plant! What would you like to name it?");
     string nameResponse = Console.ReadLine().ToLower();
-    Plant testPlant = new Plant (nameResponse, 5, 5, 5);
+    Plant testPlant = new Plant (nameResponse, 5, 5, 5, 0, "alive");
     Console.WriteLine(testPlant.Name);
     Console.WriteLine(testPlant.Thirst);
     Console.WriteLine(testPlant.Hunger);
     Console.WriteLine(testPlant.Sunshine);
-    testPlant.Thirst += 4;
-    Console.WriteLine("NEW THIRST: " + testPlant.Thirst);
 
 
 

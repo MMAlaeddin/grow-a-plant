@@ -7,13 +7,17 @@ namespace Models
     public int Thirst { get; set;}
     public int Hunger { get; set; }
     public int Sunshine { get; set; }
+    public int Days { get; set; }
+    public string Alive { get; set; }
 
-    public Plant(string name, int thirst, int hunger, int sunshine)
+    public Plant(string name, int thirst, int hunger, int sunshine, int days, string alive)
     {
       Name = name;
       Thirst = thirst;
       Hunger = hunger;
       Sunshine = sunshine;
+      Days = days;
+      Alive = alive;
     }
 
     // Plant testPlant = new Plant (nameResponse, 5, 5, 5);
@@ -32,46 +36,45 @@ namespace Models
     string userDailyChoice = Console.ReadLine().ToLower();
     if (userDailyChoice.Contains("water"))
     {
-      // testPlant.Thirst += 4;
-      // Console.WriteLine("NEW THIRST: " + testPlant.Thirst);
       testPlant.GiveWater();
-
+      testPlant.DisplayStats();
+      DailyChoice(testPlant);
     }
     else if (userDailyChoice.Contains("walk"))
     {
       testPlant.GiveSun();
-      // testPlant.Hunger += 4;
-      // Console.WriteLine("NEW HUNGER: " + testPlant.Hunger);
+      testPlant.DisplayStats();
+      DailyChoice(testPlant);
     }
      else if (userDailyChoice.Contains("feed"))
     {
       testPlant.GiveFood();
-      // testPlant.Sunshine += 4;
-      // Console.WriteLine("NEW SUNSHINE: " + testPlant.Sunshine);
+      testPlant.DisplayStats();
+      DailyChoice(testPlant);
     }
      else if (userDailyChoice.Contains("tv"))
     {
       testPlant.DoNothing();
-      // testPlant.Hunger += 4;
-      Console.WriteLine("Youre a lazy douche");
+      testPlant.DisplayStats();
+      DailyChoice(testPlant);
     }
     }
     private void GiveWater()
     {
       Thirst += 4;
-      Console.WriteLine("NEW THIRST: " + Thirst);
+      Days ++;
     }
 
     private void GiveFood()
     {
       Hunger += 4;
-      Console.WriteLine("NEW Hunger: " + Thirst);
+      Days ++;
     }
 
     private void GiveSun()
     {
       Sunshine += 4;
-      Console.WriteLine("NEW Sunshine: " + Sunshine);
+      Days ++;
     }
 
     private void DoNothing()
@@ -79,10 +82,18 @@ namespace Models
       Thirst -= 1;
       Sunshine -= 1;
       Hunger -= 1;
-      Console.WriteLine("NEW Sunshine: " + Sunshine);
+      Days ++;
     }
+    private void DisplayStats()
+    {
+      Console.WriteLine("NEW Thirst: " + Thirst);
+      Console.WriteLine("NEW Hunger: " + Hunger);
+      Console.WriteLine("NEW Sunshine: " + Sunshine);
+      Console.WriteLine("Day Count: " + Days);
+    }
+  
 
   
-   
+  
   }
 }
