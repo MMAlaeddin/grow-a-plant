@@ -19,45 +19,44 @@ namespace Models
       Days = days;
       Alive = alive;
     }
-
-    // Plant testPlant = new Plant (nameResponse, 5, 5, 5);
-    // public static void NamePlant()
-    // {
-    // string nameResponse = Console.ReadLine().ToLower();
-    // Console.WriteLine(testPlant.Name);
-    // Console.WriteLine(testPlant.Thirst);
-    // Console.WriteLine(testPlant.Hunger);
-    // Console.WriteLine(testPlant.Sunshine);
-    // }
-
     public static void DailyChoice(Plant testPlant)
     {
     Console.WriteLine("What would you like to do today?");
     string userDailyChoice = Console.ReadLine().ToLower();
-    if (userDailyChoice.Contains("water"))
+    if (testPlant.Days % 7 == 0) 
     {
-      testPlant.GiveWater();
-      testPlant.DisplayStats();
-      DailyChoice(testPlant);
+      if (testPlant.Thirst < 12 || testPlant.Hunger < 12 || testPlant.Sunshine < 12)
+      {
+        testPlant.Death();
+      }
     }
-    else if (userDailyChoice.Contains("walk"))
-    {
-      testPlant.GiveSun();
-      testPlant.DisplayStats();
-      DailyChoice(testPlant);
-    }
-     else if (userDailyChoice.Contains("feed"))
-    {
-      testPlant.GiveFood();
-      testPlant.DisplayStats();
-      DailyChoice(testPlant);
-    }
-     else if (userDailyChoice.Contains("tv"))
-    {
-      testPlant.DoNothing();
-      testPlant.DisplayStats();
-      DailyChoice(testPlant);
-    }
+      else
+      {
+        if (userDailyChoice.Contains("water"))
+        {
+          testPlant.GiveWater();
+          testPlant.DisplayStats();
+          DailyChoice(testPlant);
+        }
+        else if (userDailyChoice.Contains("walk"))
+        {
+          testPlant.GiveSun();
+          testPlant.DisplayStats();
+          DailyChoice(testPlant);
+        }
+        else if (userDailyChoice.Contains("feed"))
+        {
+          testPlant.GiveFood();
+          testPlant.DisplayStats();
+          DailyChoice(testPlant);
+        }
+        else if (userDailyChoice.Contains("tv"))
+        {
+          testPlant.DoNothing();
+          testPlant.DisplayStats();
+          DailyChoice(testPlant);
+        }
+      }
     }
     private void GiveWater()
     {
@@ -91,9 +90,21 @@ namespace Models
       Console.WriteLine("NEW Sunshine: " + Sunshine);
       Console.WriteLine("Day Count: " + Days);
     }
-  
 
-  
-  
+    private void Death()
+    {
+      Console.WriteLine(Name + " is dead cause you're worthless and lazy.");
+    }
+    // private void WeeklyCheckUp()
+    // {
+    //   if (Days % 7 == 0) 
+    // {
+    //     if (Thirst < 12 || Hunger < 12 || Sunshine < 12)
+    //     {
+    //       Death();
+          
+    //     }
+    //   }
+    // }
   }
 }
