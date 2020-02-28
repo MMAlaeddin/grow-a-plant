@@ -23,11 +23,16 @@ namespace Models
     {
     Console.WriteLine("What would you like to do today?");
     string userDailyChoice = Console.ReadLine().ToLower();
-    if (testPlant.Days % 7 == 0) 
+    if (testPlant.Days % 2 == 0) 
     {
-      if (testPlant.Thirst < 12 || testPlant.Hunger < 12 || testPlant.Sunshine < 12)
+      if (testPlant.Thirst < 5 || testPlant.Hunger < 5 || testPlant.Sunshine < 5)
       {
         testPlant.Death();
+      }
+      else if (testPlant.Thirst < 10 || testPlant.Hunger < 10 || testPlant.Sunshine < 10)
+      {
+        testPlant.Warning();
+        DailyChoice(testPlant);
       }
     }
       else
@@ -95,16 +100,10 @@ namespace Models
     {
       Console.WriteLine(Name + " is dead cause you're worthless and lazy.");
     }
-    // private void WeeklyCheckUp()
-    // {
-    //   if (Days % 7 == 0) 
-    // {
-    //     if (Thirst < 12 || Hunger < 12 || Sunshine < 12)
-    //     {
-    //       Death();
-          
-    //     }
-    //   }
-    // }
+        private void Warning()
+    {
+      Console.WriteLine(Name + " Quit being such a POS and water/feed/play with your plant.");
+    }
+    
   }
 }
